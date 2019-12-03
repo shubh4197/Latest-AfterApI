@@ -44,7 +44,7 @@
                             <p class="card-text">{{candidate.name}} </p>
                             <p class="card-text">{{candidate.username}} </p>
                             <p class="card-text">{{candidate.age}} </p>
-                            <p class="card-text">{{skills}} </p>
+                            <p class="card-text">{{candidate.skills}} </p>
                             <p class="card-text">{{dxc}} </p>
                             <br>
                             </div>
@@ -61,14 +61,16 @@
 
 
             <br>
+            
             <div *ngFor="let zip of candidate.appliedPosts" class="card border-light text-white bg-dark mb-3"
             >
-
-              <div class="card-body" style="background-color: black;color: white;">
+          
+              <div class="card-body" *ngIf="zip.vacancy!=0" style="background-color: black;color: white;">
                 <h5 class="card-title">Project Name : {{zip.projectname}}</h5>
                 <p *ngIf="candidate.dxc==1" class="card-text">Credits to  be Earned : {{zip.credits}}</p>
                 <p *ngIf="candidate.dxc==0" class="card-text">Money to be earned : {{zip.price}}</p>
               </div>
+              
             </div>
 
                 </div>

@@ -1,5 +1,5 @@
 <div>
-    <div class="jumbotron jumbotron-fluid bg-dark">
+    <div class="jumbotron jumbotron-fluid  bg-dark">
 
             <div class="jumbotron-background">
               <img src="https://forepoint.co.uk/wp-content/uploads/2018/01/DXC-cover.jpg" class="blur ">
@@ -31,8 +31,8 @@
                 <label>Description:</label>
                 <p class="card-text">{{zip.description}}</p>
                 <p class="card-text">Skills required : {{zip.skills}}</p>
-                <p class="card-text">Credits to be earned : {{zip.credits}}</p>
-                <p class="card-text">Payment for freelancers : {{zip.price}}</p>
+                <p class="card-text" *ngIf="dxc==1">Credits to be earned : {{zip.credits}}</p>
+                <p class="card-text" *ngIf="dxc==0">Payment for freelancers : {{zip.price}}</p>
                 <button class="btn"  (click)="apply(zip.id)" style="background-color: yellow; color: black;" data-toggle="modal" data-target="#exampleModal"><strong> Apply </strong></button>
               </div>
             </div>
@@ -47,9 +47,10 @@
                 <label>Description : </label>
                 <p class="card-text">{{zip.description}}</p>
                 <p class="card-text">Skills required : {{zip.skills}}</p>
-                <p class="card-text">Credits to be earned : {{zip.credits}}</p>
-                <p class="card-text">Payment for freelancers : {{zip.price}}</p>
-                <button class="btn"  (click)="apply(zip.id)" style="background-color: yellow; color: black;" data-toggle="modal" data-target="#exampleModal"><strong> Apply </strong></button>
+                <p class="card-text"  *ngIf="dxc==1">Credits to be earned : {{zip.credits}}</p>
+                <p class="card-text"  *ngIf="dxc==0">Payment for freelancers : {{zip.price}}</p>
+                <p class="card-text" *ngIf="zip.vacancy==0">Status : Started</p>
+                <p class="card-text" *ngIf="zip.vacancy!=0">Status : Accepting Applications</p>
               </div>
             </div>
           </div>

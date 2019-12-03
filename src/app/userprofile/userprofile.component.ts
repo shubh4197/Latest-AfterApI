@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Candidates, HttpserviceService } from '../httpservice.service';
 import { ActivatedRoute, Router } from '@angular/router';
 //import { userInfo } from 'os';
@@ -15,7 +15,8 @@ export class UserprofileComponent implements OnInit {
   dxc:string
   skills:string=""
   id1:string
-  constructor(private httpclient:HttpserviceService,private route:ActivatedRoute,private router:Router) { }
+  
+  constructor(private httpclient:HttpserviceService,private route:ActivatedRoute,private router:Router,private ngZone:NgZone) { }
 
   ngOnInit() {
     this.id=this.route.snapshot.paramMap.get("bounce")
@@ -49,12 +50,14 @@ export class UserprofileComponent implements OnInit {
       console.log(response);
       this.accept_mail(response.projectname.toString());
      alert("accepted")
-
-     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate(["viewposts"]);
-  });
+     this.ngZone.run(() => this.router.navigateByUrl("/viewposts"))
+     
     })
+     
+    
+ 
   }
+
 
   decline(){
     this.httpclient.declinePosts(this.id1,this.id).subscribe(response=>{

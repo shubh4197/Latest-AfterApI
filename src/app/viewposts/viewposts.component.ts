@@ -11,7 +11,8 @@ export class ViewpostsComponent implements OnInit {
   posts:Posts[]
   selected:Candidates[]
   projectName:string
-  constructor(private httpclient:HttpserviceService,private payment:PaymentService) { }
+  
+  constructor(private httpclient:HttpserviceService,private payment:PaymentService) {  }
 
   ngOnInit() {
     this.httpclient.getPosts().subscribe(response=>{this.posts=response})

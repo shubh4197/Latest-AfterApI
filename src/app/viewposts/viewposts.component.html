@@ -21,9 +21,8 @@
         <li class="nav-item active">
           <a class="nav-link" id="btn" routerLink="/viewposts"style="color: white;font-size: 25px;margin-left: 50px">View Post</a>
         </li>
-        <li class="nav-item active">
-          <a class="nav-link" id="btn" routerLink="/adminPayment"style="color: white;font-size: 25px;margin-left: 50px">Payment</a>
-        </li>
+        <button type="submit" class="btn" routerLink="" style="background-color: yellow;color: black; margin-left: 380px;"><strong>Log out</strong></button>
+
       </ul>
     </div>
   </nav>
@@ -43,8 +42,11 @@
                     <p class="card-text">Skills required : {{zip.skills}}</p>
                     <p class="card-text">Credits to be earned : {{zip.credits}}</p>
                     <p class="card-text">Payment for freelancers : {{zip.price}}</p>
-                    <a class="btn btn" style="background-color: yellow;color: black;" routerLink="/usersApplied/{{zip.id}}"><strong>View Applied</strong> </a>
-                    <a class="btn btn" style="background-color: yellow;color: black;margin-left: 30px;" routerLink="/viewSelected/{{zip.id}}"><strong>View Selected</strong> </a>
+                    <p class="card-text" *ngIf="zip.vacancy==0">Status : Started</p>
+                    <p class="card-text" *ngIf="zip.vacancy!=0">Status : Accepting Applications</p>
+                    <a class="btn btn" *ngIf="zip.vacancy!=0" style="background-color: yellow;color: black;" routerLink="/usersApplied/{{zip.id}}"><strong>View Applied</strong> </a>
+                    <a class="btn btn" *ngIf="zip.vacancy==0" style="background-color: yellow;color: black;" routerLink="/viewSelected/{{zip.id}}"><strong>View Selected</strong> </a>
+                    <a class="btn btn" *ngIf="zip.vacancy!=0" style="background-color: yellow;color: black;margin-left: 30px;" routerLink="/viewSelected/{{zip.id}}"><strong>View Selected</strong> </a>
                     <a class="btn btn-success" (click)="close(zip.id)" style="margin-left: 30px;" ><strong>Close Project</strong> </a>
                   </div>
                 </div>

@@ -29,7 +29,8 @@ export class Posts {
     public skills: string[],
     public credits: string,
     public selectedCandidates: Candidates[],
-    public appliedCandidates: Candidates[]) { }
+    public appliedCandidates: Candidates[],
+    public vacancy:number) { }
 
 }
 

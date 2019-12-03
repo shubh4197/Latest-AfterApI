@@ -15,7 +15,8 @@ export class AddpostsComponent implements OnInit {
   credits:string
   personForm: FormGroup;
   selectedHobbies: [string];
-  selectedHobbiesNames:string[]
+  selectedHobbiesNames:string[];
+  vacancy:number;
   myhobbies: any = [
        {
          name: "Java",
@@ -47,7 +48,7 @@ export class AddpostsComponent implements OnInit {
   }
   create(){
     this.getSelectedHobbies()
-    this.post=new Posts(this.projectname,this.description,this.price,this.selectedHobbiesNames,this.credits,[],[])
+    this.post=new Posts(this.projectname,this.description,this.price,this.selectedHobbiesNames,this.credits,[],[],this.vacancy)
     this.httpClient.createPosts(this.post).subscribe(response=>{alert("Posted Successfully")})
   }
 
